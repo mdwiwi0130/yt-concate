@@ -5,11 +5,11 @@ class Pipeline:
     def __init__(self, steps):
         self.steps = steps
 
-    def run(self, inputs):
-        date = None
+    def run(self, inputs, utils):
+        data = None
         for step in self.steps:
             try:
-                date = step.process(date, inputs)
+                data = step.process(data, inputs, utils)
             except StepException as err:
                 print('Exception happened : ', err)
                 break
